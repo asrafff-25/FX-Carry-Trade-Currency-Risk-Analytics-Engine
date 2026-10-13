@@ -597,35 +597,12 @@ This project demonstrates practical experience with:
 - Financial data engineering
 - Python-based quantitative research
 
----
 
-## Quant Finance Interview Summary
-
-A concise way to describe the project in an interview:
-
-> I built a systematic monthly FX carry strategy across six major currencies relative to USD. I normalized FX quote conventions, calculated interest-rate differentials, ranked currencies cross-sectionally, went long the two highest-carry currencies and short the two lowest-carry currencies, and combined FX and carry returns. I then modeled turnover and transaction costs, applied volatility targeting, and evaluated the strategy using Sharpe, Sortino, drawdown, VaR, Expected Shortfall, regression analysis, and stress testing. I also identified look-ahead risk in the original volatility-targeting implementation and proposed a lagged volatility estimate as the correction.
-
----
-
-## Disclaimer
-
-This project is for **research, educational, and portfolio-development purposes only**.
-
-It does not constitute investment advice, a recommendation to trade currencies, or evidence of guaranteed future performance.
-
-All strategy results depend on the underlying data, assumptions, implementation choices, and historical market conditions.
-
----
 
 ## Author
 
 **Asraf**
 
 Quantitative Finance | Financial Data Analytics | Python
+GitHub: asrafff-25`
 
-GitHub: `asrafff-25`
-"""
-
-path = Path("/mnt/data/README.md")
-path.write_text(readme, encoding="utf-8")
-print(f"Created: {path}")
