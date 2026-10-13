@@ -277,8 +277,14 @@ The project also tests the relationship between carry and subsequent FX returns[
 
 The basic specification is:
 
-$$ 
-R^{\text{FX}}_{i,t+1} = \alpha + \beta \text{Carry}_{i,t} + \epsilon_{i,t+1} 
+$$
+R^{FX}_{i,t+1}
+=
+\alpha
++
+\beta \text{Carry}_{i,t}
++
+\epsilon_{i,t+1}
 $$
 The objective is to examine whether currencies with higher current carry subsequently exhibit different FX returns.
 
