@@ -271,22 +271,13 @@ This is important because FX carry strategies can perform well during stable ris
 
 ---
 
-## Econometric Test
+### Econometric Test
 
-The project also tests the relationship between carry and subsequent FX returns.
+The project also tests the relationship between carry and subsequent FX returns[cite: 7].
 
 The basic specification is:
 
-\[
-R^{FX}_{i,t+1}
-=
-\alpha
-+
-\beta Carry_{i,t}
-+
-\epsilon_{i,t+1}
-\]
-
+$$ R^{\text{FX}}_{i,t+1} = \alpha + \beta \text{Carry}_{i,t} + \epsilon_{i,t+1} $$
 The objective is to examine whether currencies with higher current carry subsequently exhibit different FX returns.
 
 Heteroskedasticity and autocorrelation-consistent (HAC) standard errors are used in the regression analysis.
@@ -305,10 +296,7 @@ Transaction costs are linked to portfolio turnover.
 
 A simplified turnover measure is based on absolute changes in portfolio weights:
 
-\[
-Turnover_t =
-\sum_i |w_{i,t}-w_{i,t-1}|
-\]
+$$ \text{Turnover}_t = \sum_i |w_{i,t} - w_{i,t-1}| $$
 
 Estimated trading costs are then deducted from gross portfolio returns.
 
@@ -491,10 +479,7 @@ This is a research and educational backtesting framework, not a production tradi
 
 The project approximates carry as:
 
-\[
-\frac{Foreign\ Rate-USD\ Rate}{12}
-\]
-
+$$ \frac{\text{Foreign Rate} - \text{USD Rate}}{12} $$
 A production FX strategy would ideally use actual forward points, FX swaps, funding curves, cross-currency basis, and realistic roll conventions.
 
 ### 2. Simplified Transaction Costs
