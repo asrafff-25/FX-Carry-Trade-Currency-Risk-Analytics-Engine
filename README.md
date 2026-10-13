@@ -70,34 +70,21 @@ The baseline strategy follows these steps:
 
 For currency $i$, the carry signal is approximated as:
 
-$$
-\text{Carry}_{i,t}
-=
-r^{\text{foreign}}_{i,t}
--
-r^{\text{USD}}_{t}
-$$
+$$ \text{Carry}_{i,t} = r^{\text{foreign}}_{i,t} - r^{\text{USD}}_{t} $$
 
 where:
+* $r^{\text{foreign}}_{i,t} = \text{interest rate associated with currency } i$
+* $r^{\text{USD}}_{t} = \text{USD interest rate}$
 
-- $r^{\text{foreign}}_{i,t}$ = interest rate associated with currency $i$
-- $r^{\text{USD}}_{t}$ = USD interest rate
-
-A higher positive differential indicates greater theoretical carry from holding the foreign currency relative to USD.
+A higher positive differential indicates greater theoretical carry from holding the foreign currency relative to USD.[cite: 1]
 
 ### 2. FX Return
 
 After normalizing quote conventions:
 
-$$
-R^{FX}_{i,t}
-=
-\frac{P_{i,t}}{P_{i,t-1}}
--
-1
-$$
+$$ R^{\text{FX}}_{i,t} = \frac{P_{i,t}}{P_{i,t-1}} - 1 $$
 
-The normalization step is important because FX pairs can be quoted in opposite directions. For example, USD/JPY must be handled consistently with EUR/USD-type quotations before calculating portfolio returns.
+The normalization step is important because FX pairs can be quoted in opposite directions. For example, USD/JPY must be handled consistently with EUR/USD-type quotations before calculating portfolio returns[cite: 3].
 ### 3. Carry Return
 
 The notebook uses a simplified monthly approximation:
@@ -110,53 +97,27 @@ $$
 
 ### 4. Total Currency Return
 
-$$
-R^{Total}_{i,t}
-=
-R^{FX}_{i,t}
-+
-R^{Carry}_{i,t}
-$$
+$$ R^{\text{Total}}_{i,t} = R^{\text{FX}}_{i,t} + R^{\text{Carry}}_{i,t} $$
 
 ### 5. Portfolio Return
 
 The strategy combines currency returns according to the monthly long/short weights:
 
-$$
-R_{p,t}
-=
-\sum_i
-w_{i,t}
-R^{Total}_{i,t}
-$$
+$$ R_{p,t} = \sum_i w_{i,t} R^{\text{Total}}_{i,t} $$
 
 Transaction costs are then deducted:
 
-$$
-R^{Net}_{p,t}
-=
-R_{p,t}
--
-TC_t
-$$
+$$ R^{\text{Net}}_{p,t} = R_{p,t} - TC_t $$
 
-where transaction costs depend on portfolio turnover.
+where transaction costs depend on portfolio turnover[cite: 5].
 
 ### 6. Volatility Targeting
 
-The strategy scales exposure toward a 10% annualized volatility target using a 12-month volatility estimate.
+The strategy scales exposure toward a 10% annualized volatility target using a 12-month volatility estimate[cite: 6].
 
 Conceptually:
 
-$$
-\text{Leverage}_{t}
-=
-\frac{\sigma_{\text{target}}}
-{\sigma_{\text{estimated},t}}
-$$
-
-subject to the strategy's leverage constraints.
-
+$$ \text{Leverage}_{t} = \frac{\sigma_{\text{target}}}{\sigma_{\text{estimated},t}} $$
 > **Important implementation note:** volatility targeting should use a lagged volatility estimate when used for a strict out-of-sample backtest. For example, the rolling volatility estimate should be shifted by one period before determining the next month's position size. This prevents look-ahead bias.
 
 ---
