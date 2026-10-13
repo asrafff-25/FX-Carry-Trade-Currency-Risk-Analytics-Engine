@@ -68,16 +68,20 @@ The baseline strategy follows these steps:
 
 ### 1. Carry Signal
 
-For currency \(i\), the carry signal is approximated as:
+For currency $i$, the carry signal is approximated as:
 
-\[
-Carry_{i,t} = r_{i,t}^{foreign} - r_t^{USD}
-\]
+$$
+\text{Carry}_{i,t}
+=
+r^{\text{foreign}}_{i,t}
+-
+r^{\text{USD}}_{t}
+$$
 
 where:
 
-- \(r_{i,t}^{foreign}\) = interest rate associated with currency \(i\)
-- \(r_t^{USD}\) = USD interest rate
+- $r^{\text{foreign}}_{i,t}$ = interest rate associated with currency $i$
+- $r^{\text{USD}}_{t}$ = USD interest rate
 
 A higher positive differential indicates greater theoretical carry from holding the foreign currency relative to USD.
 
@@ -85,47 +89,56 @@ A higher positive differential indicates greater theoretical carry from holding 
 
 After normalizing quote conventions:
 
-\[
-R^{FX}_{i,t} = \frac{P_{i,t}}{P_{i,t-1}} - 1
-\]
+$$
+R^{FX}_{i,t}
+=
+\frac{P_{i,t}}{P_{i,t-1}}
+-
+1
+$$
 
 The normalization step is important because FX pairs can be quoted in opposite directions. For example, USD/JPY must be handled consistently with EUR/USD-type quotations before calculating portfolio returns.
-
 ### 3. Carry Return
 
 The notebook uses a simplified monthly approximation:
 
-\[
-R^{Carry}_{i,t} \approx \frac{Carry_{i,t}}{12}
-\]
+$$
+R^{Carry}_{i,t}
+\approx
+\frac{\text{Carry}_{i,t}}{12}
+$$
 
 ### 4. Total Currency Return
 
-\[
+$$
 R^{Total}_{i,t}
 =
 R^{FX}_{i,t}
 +
 R^{Carry}_{i,t}
-\]
+$$
 
 ### 5. Portfolio Return
 
 The strategy combines currency returns according to the monthly long/short weights:
 
-\[
-R_{p,t} = \sum_i w_{i,t}R_{i,t}
-\]
+$$
+R_{p,t}
+=
+\sum_i
+w_{i,t}
+R^{Total}_{i,t}
+$$
 
 Transaction costs are then deducted:
 
-\[
+$$
 R^{Net}_{p,t}
 =
 R_{p,t}
 -
 TC_t
-\]
+$$
 
 where transaction costs depend on portfolio turnover.
 
@@ -135,11 +148,12 @@ The strategy scales exposure toward a 10% annualized volatility target using a 1
 
 Conceptually:
 
-\[
-Leverage_t =
-\frac{\sigma_{target}}
-{\sigma_{estimated,t}}
-\]
+$$
+\text{Leverage}_{t}
+=
+\frac{\sigma_{\text{target}}}
+{\sigma_{\text{estimated},t}}
+$$
 
 subject to the strategy's leverage constraints.
 
