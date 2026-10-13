@@ -286,6 +286,7 @@ R^{FX}_{i,t+1}
 +
 \epsilon_{i,t+1}
 $$
+
 The objective is to examine whether currencies with higher current carry subsequently exhibit different FX returns.
 
 Heteroskedasticity and autocorrelation-consistent (HAC) standard errors are used in the regression analysis.
