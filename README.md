@@ -1,7 +1,7 @@
 # FX-Carry-Trade-Currency-Risk-Analytics-Engine
 from pathlib import Path
 
-readme = r"""# FX Carry Trade & Currency Risk Analytics Engine
+readme = # FX Carry Trade & Currency Risk Analytics Engine
 
 A systematic quantitative FX strategy that tests whether cross-sectional interest-rate differentials can generate risk-adjusted returns after incorporating exchange-rate movements, transaction costs, volatility targeting, and tail-risk analysis.
 
